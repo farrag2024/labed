@@ -106,76 +106,6 @@
             transform: translateY(1px);
         }
         
-        /* نافذة الرسالة المنبثقة */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-        
-        .modal-overlay.active {
-            display: flex;
-        }
-        
-        .modal-box {
-            background: #fff;
-            color: #333;
-            border-radius: 20px;
-            padding: 30px 25px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: popIn 0.3s ease;
-        }
-        
-        @keyframes popIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        
-        .modal-box .icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-        
-        .modal-box h2 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: #2575fc;
-        }
-        
-        .modal-box p {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 22px;
-            line-height: 1.7;
-        }
-        
-        .modal-box button {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            color: #fff;
-            border: none;
-            padding: 12px 40px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
-        }
-        
-        .modal-box button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
-        }
-        
         .footer {
             margin-top: 30px;
             font-size: 14px;
@@ -216,64 +146,24 @@
         <h1>منصة مدرسة لبيد بن ربيعه للتعليم الاساسي</h1>
         <p>مرحباً بكم في المنصة التعليمية للمدرسة، .</p>
         
-        <!-- تم تغيير الرابط إلى زر عادي مع الاحتفاظ بالرابط الأصلي في التعليق -->
-        <!-- الرابط الأصلي للرجوع إليه لاحقاً:
-        https://script.google.com/macros/s/AKfycbwgXTEArRqUYRSGRdFlOVQJvmnwyG2zca7Jy8nxBN4QjfcApPvbuwsXa_kBd7OX_gqZCQ/exec
-        -->
-        <button type="button" class="btn" id="loginBtn">دخول المنصة</button>
+        <a href="https://script.google.com/macros/s/AKfycbxGHFfcoevtfFkm7pGfdwwqdHxNkQNqdWTj1es1s6yLUg3vMOnRryLVw65Hw4HVEk9w1Q/exec" class="btn" target="_blank">دخول المنصة</a>
         
         <div class="footer">
             جميع الحقوق محفوظه..@ Ahmed_galal 92235967
         </div>
     </div>
 
-    <!-- نافذة الرسالة -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <div class="icon">🛠️</div>
-            <h2>تنبيه</h2>
-            <p>هناك تحديث سينتهي قريباً، شكراً لتفهمكم</p>
-            <button type="button" id="closeModal">حسناً</button>
-        </div>
-    </div>
-
     <script>
+        // إضافة تأثيرات تفاعلية بسيطة
         document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.getElementById('loginBtn');
-            const overlay = document.getElementById('modalOverlay');
-            const closeBtn = document.getElementById('closeModal');
-
-            // تأثيرات الزر
+            const btn = document.querySelector('.btn');
+            
             btn.addEventListener('mouseenter', function() {
                 this.style.background = 'linear-gradient(to right, #ff4b2b, #ff416c)';
             });
             
             btn.addEventListener('mouseleave', function() {
                 this.style.background = 'linear-gradient(to right, #ff416c, #ff4b2b)';
-            });
-
-            // عند الضغط على زر الدخول: إظهار الرسالة بدلاً من فتح الرابط
-            btn.addEventListener('click', function() {
-                overlay.classList.add('active');
-            });
-
-            // إغلاق الرسالة
-            closeBtn.addEventListener('click', function() {
-                overlay.classList.remove('active');
-            });
-
-            // إغلاق الرسالة عند الضغط خارج الصندوق
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    overlay.classList.remove('active');
-                }
-            });
-
-            // إغلاق الرسالة بمفتاح Escape
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    overlay.classList.remove('active');
-                }
             });
         });
     </script>
